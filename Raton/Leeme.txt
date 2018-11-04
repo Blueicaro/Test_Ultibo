@@ -1,0 +1,7 @@
+Proyectos de prueba de integración de Asphyre con el ratón en ultibo.
+
+Nota: En las opciones del proyecto, compiler options,path; poner en los campos Other unit files e Include files poner la ruta a la librería Asphyre (version githut)
+
+Primera prueba:
+	El ejemplo BasicGL de Asphyre se añade el ratón. En esta prueba la posición del ratón se actualiza cada vez
+	que se asphyre refresca la pantalla. El ratón parece tener mucha inercia 
