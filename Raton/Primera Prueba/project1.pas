@@ -294,7 +294,8 @@ begin
   EngineFonts[FontTahoma].DrawText(Point2(4.0,64),'Ancho texto: '+IntToStr(EngineFonts[FontTahoma].Width),IntColor2($FFE8FFAA, $FF12C312));
   EngineFonts[FontTahoma].DrawText(Point2(4.0,82),'Alto texto: '+IntToStr(EngineFonts[FontTahoma].Height),IntColor2($FFE8FFAA, $FF12C312));
   //Leer Ratón
-  if MouseRead(@MouseData,SizeOf(TMouseData),Count)=ERROR_SUCCESS then
+  if MouseReadEx(@MouseData,sizeOf(TMouseData),MOUSE_FLAG_NON_BLOCK,Count)=ERROR_SUCCESS then
+  //if MouseRead(@MouseData,SizeOf(TMouseData),Count)=ERROR_SUCCESS then
   begin
    If (MouseData.OffsetX<>0) or (MouseData.OffsetY<>0) then
    begin

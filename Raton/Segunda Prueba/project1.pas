@@ -140,7 +140,7 @@ begin
   if FFrame = nil Then
   begin
    ConsoleWriteLn('FFrame es nil');
-   Sleep(1000);
+   ThreadSleep(1000);
    ThreadHalt(0);
   end;
   FramebufferDeviceGetProperties(FFrame,@FFramebufferProperties);
@@ -154,11 +154,11 @@ begin
   else
   begin
     ConsoleWriteLn('Fallo en raton execute:'+IntTostr(CodigoError));
-    Sleep(1000);
+    ThreadSleep(1000);
     ThreadHalt(0);
   end;
   repeat
-  if MouseRead(@MouseData,SizeOf(TMouseData),Count)=ERROR_SUCCESS then
+  if MouseReadEx(@MouseData,SizeOf(TMouseData),MOUSE_FLAG_NON_BLOCK,count) = ERROR_SUCCESS then
   begin
    If (MouseData.OffsetX<>0) or (MouseData.OffsetY<>0) then
    begin
@@ -173,29 +173,11 @@ begin
 
     //Actualizar posición
     FramebufferDeviceUpdateCursor(FFrame,True,FCursorX,FCursorY,False);
-     Sleep(100);
    end;
-    Sleep(100);
+    ThreadSleep(100);
   end;
   until Terminated=True;
-  //if MouseRead(@MouseData,SizeOf(TMouseData),Count)=ERROR_SUCCESS then
-  //begin
-  // If (MouseData.OffsetX<>0) or (MouseData.OffsetY<>0) then
-  // begin
-  //  //Por ahora no controlo los botones
-  //  FCursorX:=FCursorX+MouseData.OffsetX;
-  //  if FCursorX <FMinCursorX then FCursorX:=FMinCursorX;
-  //  if FCursorX > (FMaxCursorX-1) then FCursorX:=FMaxCursorX-1;
-  //
-  //  FCursorY:=FCursorY+MouseData.OffsetY;
-  //  if FCursorY <FMinCursorY then FCursorY:=FMinCursorY;
-  //  if FCursorY > FMaxCursorY-1 then FCursorY:=FMaxCursorY-1;
-  //
-  //  //Actualizar posición
-  //  FramebufferDeviceUpdateCursor(FFrame,True,FCursorX,FCursorY,False);
-  // end;
-  // end;
-  //until Terminated = true;
+
   //
 end;
 
@@ -416,13 +398,14 @@ begin
   MainForm := TMainForm.Create;
   if MainForm.FormCreate(nil) then
   begin
-    MainForm.Raton.Execute;
+
     ConsoleWriteLn('MainForm Created.');
 
     while not ConsoleKeyPressed do
     begin
       // Refresh the image
       MainForm.ApplicationIdle(nil);
+       MainForm.Raton.Execute;
      end;
 
     ConsoleReadKey;

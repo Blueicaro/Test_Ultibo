@@ -47,8 +47,8 @@
       <Filename Value="project1"/>
     </Target>
     <SearchPaths>
-      <IncludeFiles Value="$(ProjOutDir);..\..\GitHut\Asphyre\Source"/>
-      <OtherUnitFiles Value="..\..\GitHut\Asphyre\Source"/>
+      <IncludeFiles Value="$(ProjOutDir);..\..\..\..\GitHut\Asphyre\Source"/>
+      <OtherUnitFiles Value="..\..\..\..\GitHut\Asphyre\Source"/>
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>
