@@ -13,7 +13,7 @@ Existe la opción de acutalizar la tarjeta de manera automática si la placa Ras
 * La placa Raspberry debe tener conexión a red.
 * Añadir la unidad uTFTP.pas. Esta unidad es original de pjde y se puede descargar de su [Github](https://github.com/pjde/ultibo-tftp).
 
-En la  carpeta [UpdateFtp](https://github.com/Blueicaro/Test_Ultibo/UpdateFtp) hay ejemplo basado en el original.
+En la  carpeta [UpdateFtp](https://github.com/Blueicaro/Test_Ultibo/tree/master/UpdateFtp) hay ejemplo basado en el original.
 
 
 
