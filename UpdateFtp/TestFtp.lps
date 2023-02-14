@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="TestFtp.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="40"/>
+        <CursorPos X="27" Y="62"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="utftp.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uTFTP"/>
+        <EditorIndex Value="2"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../ultibo/core/fpc/source/rtl/ultibo/core/globaltypes.pas"/>
+        <UnitName Value="GlobalTypes"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="56"/>
+        <CursorPos X="2" Y="70"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="8">
+      <Position>
+        <Filename Value="TestFtp.lpr"/>
+        <Caret Line="42" Column="5" TopLine="14"/>
+      </Position>
+      <Position>
+        <Filename Value="TestFtp.lpr"/>
+        <Caret Line="40" Column="5" TopLine="10"/>
+      </Position>
+      <Position>
+        <Filename Value="TestFtp.lpr"/>
+        <Caret Line="25" Column="10" TopLine="12"/>
+      </Position>
+      <Position>
+        <Filename Value="TestFtp.lpr"/>
+        <Caret Line="48" Column="87" TopLine="21"/>
+      </Position>
+      <Position>
+        <Filename Value="TestFtp.lpr"/>
+        <Caret Line="60" Column="24" TopLine="34"/>
+      </Position>
+      <Position>
+        <Filename Value="TestFtp.lpr"/>
+        <Caret Line="29" Column="31" TopLine="13"/>
+      </Position>
+      <Position>
+        <Filename Value="TestFtp.lpr"/>
+        <Caret Line="30" Column="19" TopLine="24"/>
+      </Position>
+      <Position>
+        <Filename Value="TestFtp.lpr"/>
+        <Caret Line="50" Column="38" TopLine="34"/>
+      </Position>
+      <Position>
+        <Filename Value="TestFtp.lpr"/>
+        <Caret Line="61" Column="53" TopLine="38"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

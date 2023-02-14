@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="/home/jorge/ultibo/core/fpc/bin/fpc" Date="1673191522"/>
+  <Params Value=" -Tultibo -Parm -CpARMV6 -WpRPIB @/home/jorge/ultibo/core/fpc/bin/RPI.CFG -MObjFPC -Scghi -CX -O2 -XX -l -vewnhibq -Fi/home/jorge/Documentos/github/Test_Ultibo/UpdateFtp/lib/arm-ultibo -Fu/home/jorge/Documentos/github/Test_Ultibo/UpdateFtp/ -FU/home/jorge/Documentos/github/Test_Ultibo/UpdateFtp/lib/arm-ultibo/ -FE/home/jorge/Documentos/github/Test_Ultibo/UpdateFtp/ -o/home/jorge/Documentos/github/Test_Ultibo/UpdateFtp/TestFtp TestFtp.lpr"/>
+</CONFIG>
