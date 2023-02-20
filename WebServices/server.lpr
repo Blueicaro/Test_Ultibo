@@ -20,95 +20,16 @@ uses
   Threads,
   SysUtils,
   Classes,
-  uTFTP,
   Ultibo,
+  Winsock2,
+  uTFTP, WebSocket2,
   Console,
-  wsutils,
-  wsmessages,
-  wsstream,
-  websocketserver,
-  Winsock2;
+  Logging;      {Para poder hacer looging}
 
-type
 
-  { TSocketHandler }
-
-  TSocketHandler = class(TThreadedWebsocketHandler)
-  private
-    procedure ConnectionClosed(Sender: TObject);
-    procedure MessageReceived(Sender: TObject);
-  public
-    function Accept(const ARequest: TRequestData;
-      const ResponseHeaders: TStrings): boolean; override;
-    procedure DoHandleCommunication(ACommunication: TWebsocketCommunicator);
-      override;
-  end;
 var
-  Ventana: TWindowHandle;
-  socket: TWebSocketServer;
-  ipString: string;
-
-  procedure TSocketHandler.ConnectionClosed(Sender: TObject);
-  var
-    Comm: TWebsocketCommunicator;
-  begin
-    Comm := TWebsocketCommunicator(Sender);
-    ConsoleWindowWriteLn(Ventana, 'Connection to ' +
-      Comm.SocketStream.RemoteAddress.Address + ' clossed');
-  end;
-
-  procedure TSocketHandler.MessageReceived(Sender: TObject);
-  var
-    Messages: TWebsocketMessageOwnerList;
-    m: TWebsocketMessage;
-    Comm: TWebsocketCommunicator;
-  begin
-    ConsoleWindowWriteLn(Ventana, 'MessageReciived');
-    Comm := TWebsocketCommunicator(Sender);
-    Messages := TWebsocketMessageOwnerList.Create(True);
-    try
-      Comm.GetUnprocessedMessages(Messages);
-      for m in Messages do
-        if m is TWebsocketStringMessage then
-        begin
-          ConsoleWindowWriteLn(Ventana, 'Message from ' +
-            Comm.SocketStream.RemoteAddress.Address + ': ' +
-            TWebsocketStringMessage(m).Data);
-        end;
-    finally
-      Messages.Free;
-    end;
-  end;
-
-
-  function TSocketHandler.Accept(const ARequest: TRequestData;
-  const ResponseHeaders: TStrings): boolean;
-  begin
-    Result := True;
-  end;
-
-  procedure TSocketHandler.DoHandleCommunication(ACommunication: TWebsocketCommunicator);
-  var
-    str: string;
-  begin
-    ConsoleWindowWriteLn(Ventana,'Connected to '+ACommunication.SocketStream.RemoteAddress.Address);
-    ACommunication.OnReceiveMessage := @MessageReceived;
-    ACommunication.OnClose := @ConnectionClosed;
-    while ACommunication.Open do
-    begin
-      //ReadLn(str);
-      str := '';
-      if not ACommunication.Open then
-        Break; // could be closed by the time ReadLn takes
-      if str <> '' then
-      begin
-        ACommunication.WriteStringMessage(str);
-        ConsoleWindowWriteLn(Ventana,'Message to '+ACommunication.SocketStream.RemoteAddress.Address);
-      end;
-
-    end;
-    socket.Stop(True);
-  end;
+  VentanaPrincipal: TWindowHandle;
+  ipAddress: string;
 
   function WaitForIPComplete: string;
   var
@@ -129,32 +50,23 @@ var
 
   procedure Mensajes(Sender: TObject; Msg: string);
   begin
-    if Ventana = INVALID_HANDLE_VALUE then
-    begin
-      exit;
-    end;
-    ConsoleWindowWrite(Ventana, Msg);
+    ConsoleWindowWrite(VentanaPrincipal, Msg);
   end;
 
 begin
-
-  Ventana := ConsoleWindowCreate(ConsoleDeviceGetDefault, CONSOLE_POSITION_FULL, False);
-  ConsoleWindowWriteLn(Ventana, 'WebServer starting');
-  ConsoleWindowWriteLn(Ventana, 'Waiting for ip');
-  ipString := WaitForIPComplete;
-  ConsoleWindowWriteLn(Ventana, 'Ip :' + ipString);
+  VentanaPrincipal := ConsoleWindowCreate(ConsoleDeviceGetDefault,
+    CONSOLE_POSITION_LEFT, True);
   SetOnMsg(@Mensajes);
-  socket := TWebSocketServer.Create(8080);
-  socket.Output := Ventana;
-  ConsoleWindowWriteLn(Ventana, 'socket create');
-  try
-    socket.FreeHandlers := True;
-    socket.RegisterHandler('*', '*', TSocketHandler.Create, True, True);
-    ConsoleWindowWriteLn(Ventana, 'socket start');
-    socket.Start;
-  finally
-    ConsoleWindowWriteLn(Ventana, 'finally');
-    socket.Free;
-  end;
+
+
+  { Por defecto loggind está desactivado, así que hay que activarlo }
+  CONSOLE_REGISTER_LOGGING := True;
+  LoggingConsoleDeviceAdd(ConsoleDeviceGetDefault);
+  LoggingDeviceSetDefault(LoggingDeviceFindByType(LOGGING_TYPE_CONSOLE));
+
+  //Mensajes por la consola de depuración
+  LoggingOutput('Esperando por Ip');
+  ipAddress := WaitForIPComplete;
+  LoggingOutput('Ip actual: ' + ipAddress);
   ThreadHalt(0);
 end.

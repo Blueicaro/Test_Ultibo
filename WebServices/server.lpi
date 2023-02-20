@@ -2,6 +2,7 @@
 <CONFIG>
   <ProjectOptions>
     <Version Value="12"/>
+    <PathDelim Value="\"/>
     <General>
       <Flags>
         <MainUnitHasCreateFormStatements Value="False"/>
@@ -18,8 +19,6 @@
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
-      <DestinationDirectory Value="/home/jorge/Documentos/github/Test_Ultibo/WebServices/publish"/>
-      <OpenInFileMan Value="True"/>
       <UseFileFilters Value="True"/>
     </PublishOptions>
     <RunParams>
@@ -31,21 +30,31 @@
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="../UpdateFtp/utftp.pas"/>
+        <Filename Value="..\Librerias\UpdateFtp\utftp.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTFTP"/>
+      </Unit>
+      <Unit>
+        <Filename Value="webserver.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\Librerias\bauglir library 2.0.4\websocket2.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="WebSocket2"/>
       </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>
+    <PathDelim Value="\"/>
     <Target>
       <Filename Value="server"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="../UpdateFtp"/>
-      <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+      <OtherUnitFiles Value="D:\github\Test_Ultibo\Librerias\UpdateFtp\;..\Librerias\bauglir library 2.0.4"/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>
       <TargetProcessor Value="armv6"/>
