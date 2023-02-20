@@ -1,7 +1,0 @@
-{$IFDEF FPC}
-  {$PACKRECORDS C}
-  {$MODE DELPHI}
-{$ELSE}
-  {$ALIGN ON}
-{$ENDIF}
-
