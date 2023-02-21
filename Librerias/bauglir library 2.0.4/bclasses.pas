@@ -23,8 +23,8 @@ interface
 uses
   {$IFDEF UNIX}
   cthreads,
-  {$ELSE UNIX}
-  windows,
+  //{$ELSE WINDOWS}
+  //windows,
   {$ENDIF}
   Classes, SysUtils, SyncObjs;
 
